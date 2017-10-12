@@ -15,7 +15,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-		ansible localhost -m ping
+		ansiblePlaybook installation: 'Default', playbook: '/home/david/git/DevOps/Ansible/playbook/main.yml', sudoUser: null
             }
         }
     }
