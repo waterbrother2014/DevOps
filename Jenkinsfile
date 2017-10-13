@@ -6,17 +6,16 @@ pipeline {
         echo 'Building...'
       }
     }
-    stage('Monitor') {
+    stage('Test') {
       parallel {
-        stage('Test') {
+        stage('Testing') {
           steps {
             echo 'Testing...'
           }
         }
-        stage('') {
+        stage('Monitoring') {
           steps {
-            echo 'Monitoring progress...'
-            pwd(tmp: true)
+            pwd()
           }
         }
       }
