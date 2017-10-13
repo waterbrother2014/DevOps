@@ -6,10 +6,19 @@ pipeline {
         echo 'Building...'
       }
     }
-    stage('Test') {
-      steps {
-        echo 'Testing...'
-        sh 'ls -l .'
+    stage('Monitor') {
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Testing...'
+          }
+        }
+        stage('') {
+          steps {
+            echo 'Monitoring progress...'
+            pwd(tmp: true)
+          }
+        }
       }
     }
     stage('Deploy') {
